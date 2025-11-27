@@ -9703,3 +9703,97 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+
+    /* --- 1. MODERN GLASSMORPHISM EFFECT --- */
+.resume-wrap, .services-1, .ftco-footer {
+    background: rgba(255, 255, 255, 0.05) !important; /* Lower opacity */
+    backdrop-filter: blur(10px); /* The Blur Effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a lift effect on hover */
+.resume-wrap:hover, .services-1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* --- 3. CUSTOM DARK SCROLLBAR --- */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333; 
+    border-radius: 6px;
+    border: 3px solid #000000; /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffbd39; /* Turns yellow on hover */
+}
+
+
+/* --- 2. DATA ANALYST SKILL COLORS --- */
+/* You will need to add these classes to your HTML progress-bar divs later */
+
+/* Excel Green */
+.progress-bar.bg-excel {
+    background-color: #1D6F42 !important; 
+}
+
+/* SQL Blue */
+.progress-bar.bg-sql {
+    background-color: #00758F !important;
+}
+
+/* Python Blue/Yellow Gradient */
+.progress-bar.bg-python {
+    background: linear-gradient(90deg, #306998 0%, #FFD43B 100%) !important;
+}
+
+/* PowerBI Yellow */
+.progress-bar.bg-powerbi {
+    background-color: #F2C811 !important;
+}
+
+/* Make the bars thicker and rounder */
+.progress {
+    height: 12px;
+    border-radius: 10px;
+    background: #2d2d2d; /* Darker track */
+}
+.progress-bar {
+    border-radius: 10px;
+}
+
+
+/* --- 4. TYPOGRAPHY IMPROVEMENTS --- */
+body {
+    color: #bfbfbf; /* Lighten the text slightly for better contrast */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Selection color (when you highlight text) */
+::selection {
+    background: #ffbd39;
+    color: #000;
+}
+
+/* Statistical Analysis (Purple) */
+.progress-bar.bg-stats {
+    background-color: #6f42c1 !important; /* Deep Purple */
+}
+
