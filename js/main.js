@@ -73,7 +73,7 @@
 
 	    $('html, body').animate({
 	        scrollTop: $($.attr(this, 'href')).offset().top - 70
-	    }, 500, function() {
+	    }, 800, function() {
 	    	// window.location.hash = href;
 	    });
 		});
@@ -190,7 +190,7 @@
 					  {
 					    number: num,
 					    numberStep: comma_separator_number_step
-					  }, 7000
+					  }, 2700
 					);
 				});
 				
