@@ -1266,7 +1266,80 @@ html, body {
         transform: scale(0.8); /* Shrink decorative corners slightly */
     }
 }
+/* ==============================================
+   NUCLEAR MOBILE FIX: ABOUT ME SECTION
+   ============================================== */
 
+@media (max-width: 768px) {
+
+    /* 1. UNLOCK THE CONTAINER */
+    /* Remove flex restrictions so items can stack vertically */
+    .ftco-about .row {
+        display: block !important; /* Stack items */
+        margin: 0 !important;
+        padding: 10px !important; /* Minimal padding */
+        background: #000 !important; /* Solid black background for readability */
+        box-shadow: none !important; /* Remove heavy shadows */
+        border: none !important;
+    }
+
+    /* 2. FIX THE COLUMNS */
+    /* Force the Left (Image) and Right (Text) columns to be 100% width */
+    .ftco-about .col-md-6, 
+    .ftco-about .col-lg-5, 
+    .ftco-about .col-lg-7 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        padding: 0 !important;
+    }
+
+    /* 3. FIX THE IMAGE */
+    .img-about {
+        width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+    .about-img {
+        width: 150px !important; /* Fixed size circle/square */
+        height: 150px !important;
+        margin: 0 auto !important; /* Center it */
+    }
+
+    .about-img img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 50% !important; /* Make it a circle on mobile */
+    }
+
+    /* 4. FIX THE TEXT ALIGNMENT */
+    .about-info {
+        text-align: center !important; /* Center name and details */
+        margin-bottom: 30px !important;
+    }
+
+    /* Fix the list items (Name, Role, etc) to center properly */
+    .about-info .d-flex {
+        display: block !important; /* Stack label and value */
+        margin-bottom: 10px;
+    }
+
+    .about-info span {
+        display: block !important; /* Put value on new line */
+    }
+
+    /* 5. FIX THE SKILLS BAR LAYOUT */
+    .skill-mf {
+        padding: 0 10px !important;
+        margin-top: 30px !important;
+    }
+
+    /* 6. HIDE DECORATIONS THAT BREAK LAYOUT */
+    .ftco-about .row::before,
+    .ftco-about .row::after {
+        display: none !important; /* Remove corner brackets on mobile */
+    }
+}
 
 </style>
 
