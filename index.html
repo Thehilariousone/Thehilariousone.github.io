@@ -27,6 +27,580 @@
 
 <style>
 
+  /* --- CLEAN SYSTEM FOOTER TEXT --- */
+
+.copyright-terminal p {
+    color: #888;
+    font-family: 'Share Tech Mono', monospace; /* Tech Font */
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* 1. The "SYSTEM.ROOT:" Prefix */
+.sys-prefix {
+    color: #ffbd39; /* Gold */
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* 2. The Link (Ashutosh) */
+.author-link {
+    color: #fff !important;
+    text-decoration: none;
+    border-bottom: 1px solid #ffbd39;
+    transition: 0.3s;
+}
+
+.author-link:hover {
+    color: #ffbd39 !important;
+    background: rgba(255, 189, 57, 0.1);
+    box-shadow: 0 0 10px #ffbd39;
+}
+
+/* 3. The Blinking Cursor at the end */
+.blinking-cursor {
+    color: #ffbd39;
+    font-weight: bold;
+    animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+  
+
+/* --- THE NEURAL AUDIO BUTTON --- */
+
+.tech-audio-btn {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #ffbd39;
+    color: #ffbd39;
+    padding: 5px 15px;
+    font-family: 'Share Tech Mono', monospace; /* Tech Font */
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-audio-btn span {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+/* Hover Effect */
+.tech-audio-btn:hover {
+    background: #ffbd39;
+    color: #000;
+    box-shadow: 0 0 15px #ffbd39;
+}
+
+/* --- ACTIVE STATE (When Speaking) --- */
+.tech-audio-btn.speaking {
+    background: #ffbd39;
+    color: #000;
+    box-shadow: 0 0 20px #ffbd39, inset 0 0 10px white;
+    border-color: #fff;
+    padding-right: 35px; /* Make room for waves */
+}
+
+/* The Sound Wave Animation */
+.audio-waves {
+    display: none; /* Hidden by default */
+    align-items: flex-end;
+    height: 15px;
+    margin-left: 5px;
+}
+
+.tech-audio-btn.speaking .audio-waves {
+    display: flex; /* Show when speaking */
+}
+
+.audio-waves span {
+    display: block;
+    width: 3px;
+    background: #000;
+    margin: 0 1px;
+    animation: sound-wave 0.5s infinite ease-in-out;
+}
+
+/* Stagger the wave bars */
+.audio-waves span:nth-child(1) { animation-delay: 0.1s; height: 5px; }
+.audio-waves span:nth-child(2) { animation-delay: 0.2s; height: 10px; }
+.audio-waves span:nth-child(3) { animation-delay: 0.3s; height: 15px; }
+.audio-waves span:nth-child(4) { animation-delay: 0.4s; height: 8px; }
+
+@keyframes sound-wave {
+    0%, 100% { height: 5px; }
+    50% { height: 15px; }
+}
+	
+	
+
+	/* --- CENTERED SYSTEM SECTOR HEADERS --- */
+
+h1.big-4 {
+    /* 1. Flexbox Centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+    /* 2. Typography */
+    font-family: 'Share Tech Mono', monospace; 
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffbd39 !important; /* Theme Gold */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+    position: relative;
+    white-space: nowrap; /* Keeps text on one line */
+}
+
+/* 3. The Left and Right Lines (The Beams) */
+h1.big-4::before,
+h1.big-4::after {
+    content: '';
+    height: 2px;
+    flex-grow: 1; /* Stretches to fill empty space */
+    background: linear-gradient(90deg, transparent, #ffbd39, transparent); /* Fades at ends */
+    
+    /* Glow Effect */
+    box-shadow: 0 0 10px rgba(255, 189, 57, 0.5);
+    opacity: 0.6;
+}
+
+/* Spacing between Lines and Text */
+h1.big-4::before {
+    margin-right: 20px;
+}
+
+h1.big-4::after {
+    margin-left: 20px;
+}
+
+/* 4. The Hover Effect (Lines expand) */
+h1.big-4:hover::before,
+h1.big-4:hover::after {
+    background: linear-gradient(90deg, transparent, #fff, transparent); /* Flash White */
+    opacity: 1;
+    transition: 0.3s;
+}
+
+h1.big-4:hover {
+    text-shadow: 0 0 15px #ffbd39;
+    cursor: default;
+}
+	
+	/* --- THE LASER-ETCHED TERMINAL --- */
+
+.resume-wrap {
+    position: relative;
+    /* 1. Deep Glass Background */
+    background: rgba(5, 5, 5, 0.85); /* Almost black */
+    padding: 30px;
+    margin-bottom: 30px;
+    
+    /* 2. Setup the 4 Laser Lines (Using Gradients) */
+    /* Top Line */
+    background-image: linear-gradient(#ffbd39, #ffbd39), 
+    /* Right Line */
+                      linear-gradient(#ffbd39, #ffbd39), 
+    /* Bottom Line */
+                      linear-gradient(#ffbd39, #ffbd39), 
+    /* Left Line */
+                      linear-gradient(#ffbd39, #ffbd39); 
+    
+    background-repeat: no-repeat;
+    
+    /* 3. Initial State: Lines are size 0 (Invisible) */
+    /* Top & Bottom: 0 width, 2px height */
+    /* Left & Right: 2px width, 0 height */
+    background-size: 0% 2px, 2px 0%, 0% 2px, 2px 0%;
+    
+    /* 4. Positioning the lines */
+    background-position: top center, right center, bottom center, left center;
+    
+    /* 5. Smooth Transition for the "Un-hover" (Retract) */
+    transition: background-size 0.3s ease;
+    
+    /* Remove default template borders */
+    border: none !important;
+    border-radius: 0 !important; /* Tech looks sharp, not round */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Deep shadow */
+}
+
+/* --- THE HOVER ANIMATION (Drawing the box) --- */
+
+.resume-wrap:hover {
+    /* Lines expand to 100% */
+    background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+    
+    /* Glow Effect inside */
+    box-shadow: 0 0 30px rgba(255, 189, 57, 0.1) inset;
+}
+
+/* --- THE INNER BLUEPRINT GRID --- */
+/* A subtle tech pattern that fades in */
+.resume-wrap::before {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    
+    /* Mathematical Grid Pattern */
+    background-image: 
+        linear-gradient(rgba(255, 189, 57, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 189, 57, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    
+    opacity: 0; /* Hidden by default */
+    transition: 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.resume-wrap:hover::before {
+    opacity: 1; /* Reveals on hover */
+}
+
+/* --- TYPOGRAPHY STYLING --- */
+
+/* The Date Tag */
+.resume-wrap .date {
+    color: #ffbd39 !important;
+    font-family: monospace; /* Coding font */
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 1px solid rgba(255, 189, 57, 0.3);
+    padding: 2px 8px;
+    background: rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.resume-wrap:hover .date {
+    background: #ffbd39;
+    color: #000 !important; /* Invert colors on hover */
+    box-shadow: 0 0 10px #ffbd39;
+}
+
+/* The Headings */
+.resume-wrap h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+/* The Description */
+.resume-wrap p, .resume-wrap li {
+    color: #ccc;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+	/* --- MULTI-COLOR SKILL BARS --- */
+
+/* 1. PYTHON (Teal/Cyan) */
+.bg-python {
+    background: repeating-linear-gradient(
+        45deg,
+        #00f3ff,
+        #00f3ff 10px,
+        #00c0cc 10px,
+        #00c0cc 20px
+    ) !important;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.4); /* Neon Glow */
+}
+
+/* 2. SQL (Deep Database Blue) */
+.bg-sql {
+    background: repeating-linear-gradient(
+        45deg,
+        #2979ff,
+        #2979ff 10px,
+        #1c54b2 10px,
+        #1c54b2 20px
+    ) !important;
+}
+
+/* 3. EXCEL (Spreadsheet Green) */
+.bg-excel {
+    background: repeating-linear-gradient(
+        45deg,
+        #00e676,
+        #00e676 10px,
+        #00b248 10px,
+        #00b248 20px
+    ) !important;
+}
+
+/* 4. POWER BI / VIZ (Theme Gold) */
+.bg-powerbi {
+    background: repeating-linear-gradient(
+        45deg,
+        #ffbd39,
+        #ffbd39 10px,
+        #c48f22 10px,
+        #c48f22 20px
+    ) !important;
+}
+
+/* 5. STATISTICS (Crimson Red) */
+.bg-stats {
+    background: repeating-linear-gradient(
+        45deg,
+        #ff1744,
+        #ff1744 10px,
+        #b2102f 10px,
+        #b2102f 20px
+    ) !important;
+}
+	/* --- THE ANALYTICAL BLUEPRINT --- */
+
+/* 1. The Container: Graph Paper Effect */
+.ftco-about .row {
+    background-color: #0b0b0b; /* Deep Black base */
+    
+    /* This creates a graph grid using pure CSS gradients */
+    background-image: 
+        linear-gradient(rgba(255, 189, 57, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 189, 57, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px; /* Size of the grid squares */
+    
+    /* Tech Borders */
+    border: 1px solid rgba(255, 189, 57, 0.3);
+    position: relative;
+    padding: 40px;
+    margin-top: 30px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8) inset; /* Inner shadow for depth */
+}
+
+/* 2. The "Data Tag" (Top Left Decor) */
+/* Creates a little "System ID" tag in the corner */
+.ftco-about .row::before {
+    content: 'SYS.ID: 10-ASHUTOSH';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffbd39;
+    color: #000;
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+}
+
+/* 3. The "Corner Brackets" (Targeting Reticle) */
+.ftco-about .row::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid #ffbd39;
+    border-right: 3px solid #ffbd39;
+}
+
+/* 4. Profile Image (Floating with Data Shadow) */
+.about-img img {
+    border: 1px solid #ffbd39;
+    padding: 5px; /* Gap between image and border */
+    background: rgba(255, 189, 57, 0.1);
+    /* Hard shadow, no blur (Retro Tech style) */
+    box-shadow: 10px 10px 0px rgba(255, 189, 57, 0.2); 
+    transition: 0.2s;
+}
+
+.about-img img:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px rgba(255, 189, 57, 0.4);
+}
+
+/* 5. Typography */
+.about-info h5 {
+    color: #fff;
+}
+.about-info p, .about-info span {
+    color: #ccc;
+    font-family: 'Poppins', sans-serif;
+}
+.title-s {
+    color: #ffbd39;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
+}
+
+/* 6. Skill Bars (Data Stripes) */
+.progress {
+    background: rgba(255, 255, 255, 0.05);
+    height: 10px !important;
+    border-radius: 0;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    background: repeating-linear-gradient(
+        45deg,
+        #ffbd39,
+        #ffbd39 10px,
+        #e0a800 10px,
+        #e0a800 20px
+    ); /* Creates a striped "Caution/Industrial" look */
+}
+
+/* Percentage Text */
+.pull-right {
+    color: #ffbd39;
+    font-family: monospace;
+    font-size: 14px;
+}
+	/* --- THE GOLDEN SEARCHLIGHT --- */
+
+.searchlight-logo {
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900 !important; /* Extra Bold */
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+    /* 1. The "Ghost" Base Layer (Faint Outline) */
+    color: transparent !important;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15); /* Faint grey outline */
+}
+
+/* 2. The "Illuminated" Layer (Solid Gold) */
+.searchlight-logo::before {
+    content: attr(data-text); /* Duplicates the text exactly */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* The Gold Text Color */
+    color: #ffbd39; 
+    
+    /* The Glow Effect */
+    text-shadow: 0 0 10px rgba(255, 189, 57, 0.8);
+    
+    /* 3. The "Flashlight" Mask */
+    /* We create a circle of visibility that moves */
+    clip-path: circle(80px at 0% 50%);
+    
+    /* The Animation */
+    animation: searchlight-scan 5s ease-in-out infinite;
+}
+
+/* The Moving Beam Animation */
+@keyframes searchlight-scan {
+    0% {
+        clip-path: circle(60px at -10% 50%); /* Start off-screen left */
+    }
+    50% {
+        clip-path: circle(60px at 110% 50%); /* Move to off-screen right */
+    }
+    100% {
+        clip-path: circle(60px at -10% 50%); /* Move back left */
+    }
+}
+
+/* Optional: On Hover, turn the lights FULL on */
+.searchlight-logo:hover::before {
+    clip-path: circle(300px at 50% 50%); /* Expands to show full name */
+    transition: 0.5s ease-out;
+    cursor: pointer;
+}
+	/* The Liquid Gold Animation */
+.creative-name {
+    font-weight: 900; /* Extra Thick text */
+    /* The colors: Gold -> Red -> Gold */
+    background: linear-gradient(to right, #ffbd39, #ff3366, #ffbd39);
+    background-size: 200% auto;
+    
+    /* Clips the background to the text shape */
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* The Animation Speed */
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+	/* Removes the decorative bar under titles */
+.underline {
+    display: none !important;
+    height: 0 !important;
+    opacity: 0 !important;
+}
+
+/* Removes lines between resume items */
+.resume-wrap {
+    border: none !important;
+}
+
+/* Removes any white borders around boxes */
+.blog-entry, .block-20 {
+    border: none !important;
+}
+/* 1. FORCE THE BACKGROUND IMAGE */
+body {
+    /* Replace 'images/bg_1.jpg' with your specific image file */
+    background-image: url('images/Background_img.png') !important;
+    
+    /* Lock the background so it doesn't scroll with the text */
+    background-attachment: fixed !important;
+    
+    /* Ensure it covers the whole screen */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
+    /* Remove any solid colors hiding it */
+    background-color: transparent !important;
+}
+
+/* 2. MAKE SECTIONS SEE-THROUGH (The Glass Effect) */
+/* This ensures you can see the background behind your text */
+.ftco-section, 
+.ftco-about, 
+.resume-wrap, 
+.box {
+    /* Dark see-through overlay (0.8 is opacity) */
+    background-color: rgba(0, 0, 0, 0.8) !important; 
+    
+    /* Optional: Adds a subtle border to make cards pop */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    
+    /* Fix text color just in case */
+    color: #ffffff !important;
+}
+
+/* 3. FIX TEXT HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
 /*======================================
 //--//-->   ABOUT
 ======================================*/
@@ -109,18 +683,541 @@
 .zoom-effect:hover {
   transform: scale(1.1);
 }
+/* 1. Remove lines between Resume items */
+.resume-wrap {
+    border-bottom: none !important; /* Removes the line at the bottom of each box */
+    border: none !important;       /* Removes any other borders */
+    box-shadow: none !important;   /* Removes any shadow boxes */
+    margin-bottom: 1em !important; /* Keeps space between items without the line */
+}
+
+/* 2. Remove the line under section titles (Experience/Education) */
+.underline {
+    display: none !important;
+    background: transparent !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+/* 3. Remove any decorative lines on headings */
+.heading-section h2::after, 
+.heading-section h2::before {
+    background: transparent !important;
+    opacity: 0 !important;
+}
+
+/* 4. Global Border Cleaner (Safe Mode) */
+/* This removes gray borders from all main content boxes */
+.box, .ftco-section, .col-md-6 {
+    border: none !important;
+}
+
+
+
+/* --- THE GOLDEN HYPER-ENGINE --- */
+
+.block-18 {
+    position: relative;
+    /* 1. The Engine Casing */
+    background: #000;
+    overflow: hidden; /* Trap the turbine inside */
+    padding: 30px 20px;
+    border: 1px solid #333;
+    /* Tech corners */
+    clip-path: polygon(
+        10px 0, 100% 0, 
+        100% calc(100% - 10px), calc(100% - 10px) 100%, 
+        0 100%, 0 10px
+    );
+    transition: 0.3s;
+}
+
+/* 2. The Turbine Blades (The Spinning Background) */
+.block-18::before {
+    content: '';
+    position: absolute;
+    /* Center it */
+    top: 50%; left: 50%;
+    /* Make it huge so we only see the blades, not the edges */
+    width: 200%; 
+    height: 200%;
+    
+    /* Create 10 Blades using Conic Gradient */
+    background: repeating-conic-gradient(
+        from 0deg,
+        #000 0deg 15deg,      /* Black Gap */
+        #b88a00 15deg 20deg,  /* Dark Gold Blade Edge */
+        #ffbd39 20deg 30deg,  /* Bright Gold Blade Body */
+        #b88a00 30deg 35deg   /* Dark Gold Blade Edge */
+    );
+    
+    /* Center the pivot point */
+    transform-origin: center;
+    transform: translate(-50%, -50%); /* Center align */
+    
+    /* The Idle Animation (Slow Spin) */
+    animation: turbine-spin 10s linear infinite;
+    opacity: 0.3; /* Subtle when idle */
+    z-index: 0;
+}
+
+/* 3. The Glass Shield (Darkens the center for readability) */
+.block-18::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Radial gradient: Transparent center -> Solid Black edges */
+    background: radial-gradient(circle, rgba(0,0,0,0.6) 30%, #000 90%);
+    z-index: 1;
+}
+
+/* 4. The Number (The Core) */
+.block-18 .text {
+    position: relative;
+    z-index: 2; /* Sit on top of everything */
+}
+
+.block-18 .number {
+    font-family: 'Share Tech Mono', monospace; /* Tech Font */
+    font-size: 40px;
+    font-weight: 900;
+    color: #fff;
+    display: block;
+    
+    /* THE MAGIC: Text lets the gold spin THROUGH it */
+    mix-blend-mode: overlay; 
+    text-shadow: 0 0 20px rgba(255, 189, 57, 0.8);
+}
+
+/* 5. The Label */
+.block-18 span {
+    display: block;
+    color: #ffbd39;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    margin-top: 5px;
+    background: rgba(0,0,0,0.8); /* Background to read small text */
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 189, 57, 0.3);
+    display: inline-block;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes turbine-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* --- HOVER EFFECT: TURBO BOOST --- */
+
+.block-18:hover::before {
+    /* Spin violently fast */
+    animation-duration: 2s; 
+    opacity: 0.8; /* Brighten up */
+}
+
+.block-18:hover {
+    border-color: #ffbd39; /* Gold border lights up */
+    box-shadow: 0 0 30px rgba(255, 189, 57, 0.2);
+    transform: scale(1.05); /* Slight pop */
+}
+
+.block-18:hover .number {
+    color: #ffbd39; /* Solid gold text on hover */
+    mix-blend-mode: normal; /* Turn off blend to make it pop */
+    text-shadow: 0 0 30px #ffbd39;
+}
+
+
+/* --- THE ORBITAL CONNECTIVITY HUB (Social Section) --- */
+
+/* 1. Container Spacing */
+.ftco-footer-social {
+    margin-top: 50px;
+    padding-bottom: 30px;
+    position: relative;
+    z-index: 5;
+}
+
+/* 2. "Find me on" Text Label */
+/* We make this look like a System Prompt */
+.ftco-footer-social li.normal-txt {
+    color: #fff !important;
+    font-family: 'Share Tech Mono', monospace; /* Tech Font */
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-right: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Add a blinking "Signal" dot next to the text */
+.ftco-footer-social li.normal-txt::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: #00ff00; /* Green = Online */
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 10px #00ff00;
+    animation: signal-blink 2s infinite;
+}
+
+/* 3. The Social Buttons (The Orbs) */
+.ftco-footer-social li a {
+    width: 50px; height: 50px;
+    background: #050505; /* Deep Black */
+    display: flex;
+    align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #333; /* Dark Border */
+    color: #888; /* Dimmed Icon */
+    font-size: 20px;
+    margin: 0 8px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
+}
+
+/* 4. The Orbit Ring (Hidden by default) */
+.ftco-footer-social li a::before {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 189, 57, 0.5); /* Gold Dash */
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+    transition: 0.4s;
+    pointer-events: none;
+}
+
+/* --- HOVER EFFECTS: ACTIVATION --- */
+
+.ftco-footer-social li a:hover {
+    transform: translateY(-10px); /* Levitate Up */
+    background: #ffbd39; /* Gold Core */
+    color: #000; /* Black Icon */
+    border-color: #ffbd39;
+    box-shadow: 0 0 30px rgba(255, 189, 57, 0.6); /* Glow */
+}
+
+/* Spin the Orbit Ring */
+.ftco-footer-social li a:hover::before {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg); /* Expand and Spin */
+}
+
+/* Icon Spin */
+.ftco-footer-social li a:hover span {
+    transform: rotate(360deg);
+    transition: 0.4s;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes signal-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* --- THE STEALTH DATA-VAULT --- */
+
+.contact-section .box {
+    position: relative;
+    /* 1. Vault Chassis */
+    background: #000 !important;
+    border: 1px solid #1a1a1a;
+    border-bottom: 2px solid #ffbd39; /* Gold accent */
+    border-radius: 6px; /* Tech-style corners */
+    
+    /* Fixed Dimensions */
+    height: 260px;
+    width: 100%;
+    padding: 0 !important; /* Remove padding to maximize space */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    overflow: hidden; /* Trap content inside */
+    transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
+}
+
+/* 2. The Background Grid (Subtle) */
+.contact-section .box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(#222 1px, transparent 1px);
+    background-size: 10px 10px;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* 3. The Icon (Center Stage) */
+.contact-section .icon {
+    width: 90px; height: 90px;
+    background: #080808 !important;
+    border: 1px solid #333;
+    border-radius: 50%;
+    color: #ffbd39;
+    font-size: 35px;
+    
+    display: flex;
+    align-items: center; justify-content: center;
+    
+    /* Glow */
+    box-shadow: 0 0 20px rgba(255, 189, 57, 0.1);
+    
+    transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy move */
+}
+
+/* 4. The Title (e.g., "EMAIL") - Visible initially */
+.contact-section h3 {
+    position: absolute;
+    bottom: 40px; /* Sits at bottom */
+    color: #fff;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    transition: 0.5s;
+    opacity: 1;
+}
+
+/* 5. The Hidden Data (Your Text/Email) */
+.contact-section p, 
+.contact-section a {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, 150%); /* Hidden below initially */
+    
+    color: #fff !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    
+    /* --- THE ONE-LINE GUARANTEE --- */
+    white-space: nowrap; /* Forces text to stay on one line */
+    width: 100%;         /* Uses full width of the box */
+    text-align: center;  /* Centers it */
+    opacity: 0;
+    transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* --- THE EMAIL SIZE HACK --- */
+/* This specific rule ensures your long email fits perfectly */
+.contact-section a[href^="mailto"] {
+    font-size: 11.5px !important; /* Precision sizing */
+    letter-spacing: 0px;
+    font-family: 'Share Tech Mono', monospace; /* Narrower font */
+    color: #ffbd39 !important; /* Gold text */
+}
+
+/* Regular text (Address/Phone) can be slightly bigger */
+.contact-section p {
+    font-size: 13px; 
+}
+
+
+/* --- HOVER ACTION: OPEN THE VAULT --- */
+
+.contact-section .box:hover {
+    border-color: #ffbd39;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    background: #050505 !important;
+}
+
+/* 1. Icon shoots UP */
+.contact-section .box:hover .icon {
+    transform: translateY(-150px) scale(0.5);
+    opacity: 0;
+}
+
+/* 2. Title shoots DOWN */
+.contact-section .box:hover h3 {
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+/* 3. Text shoots to CENTER */
+.contact-section .box:hover p, 
+.contact-section .box:hover a {
+    transform: translate(-50%, -50%); /* Locks exactly in center */
+    opacity: 1;
+}
+
+/* 4. Add a cool laser scan line */
+.contact-section .box:hover::after {
+    content: '';
+    position: absolute;
+    left: 0; width: 100%; height: 2px;
+    background: #ffbd39;
+    box-shadow: 0 0 10px #ffbd39;
+    animation: scan-vault 1.5s infinite linear;
+}
+
+@keyframes scan-vault {
+    0% { top: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* --- FIND ME ON (SOCIAL ORBS RESTORATION) --- */
+
+/* 1. Reset any accidental interference */
+.ftco-footer-social li a {
+    position: relative !important; /* Reset position */
+    top: auto !important; left: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    
+    /* Re-apply the cool style */
+    width: 50px; height: 50px;
+    background: #050505;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; justify-content: center;
+    color: #ffbd39;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+/* 2. Hover Effect for Social Icons */
+.ftco-footer-social li a:hover {
+    background: #ffbd39;
+    color: #000;
+    transform: translateY(-5px) !important; /* Float up */
+    box-shadow: 0 0 20px #ffbd39;
+}
+
+/* 3. The "Find me on" Text */
+.ftco-footer-social li.normal-txt {
+    color: #fff;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 15px;
+}
+
+/* ==============================================
+   MOBILE OPTIMIZER & SCROLL KILLER
+   ============================================== */
+
+/* 1. THE NUCLEAR FIX (Stops all horizontal scrolling) */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important; /* The magic line */
+    position: relative;
+}
+
+/* 2. FIX BOOTSTRAP GRID ISSUES */
+/* Bootstrap rows have negative margins that cause scrolling on mobile. This fixes it. */
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+
+.container, .container-fluid {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    overflow: hidden; /* Contains any exploding animations */
+}
+
+/* 3. CONTAIN THE ANIMATIONS */
+/* Ensures your Hyperspace/Circuit backgrounds don't push the screen width */
+.hyperspace-section, 
+.circuit-section, 
+.ftco-section {
+    width: 100%;
+    overflow: hidden !important;
+}
+
+/* 4. FIX THE "RUNNING BORDER" RESUME CARDS */
+/* Prevents the scrolling text from widening the page */
+.running-border-card {
+    max-width: 100vw !important; /* Force fit to viewport */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* ==============================================
+   MOBILE SPECIFIC TWEAKS (Screens smaller than 768px)
+   ============================================== */
+@media (max-width: 768px) {
+
+    /* A. Fix the "System Headers" (Experience_Log) */
+    /* The glowing lines are too wide for mobile, so we shrink them */
+    h1.big-4 {
+        font-size: 22px !important; /* Smaller text */
+        letter-spacing: 2px !important;
+        margin-bottom: 30px !important;
+    }
+    h1.big-4::before,
+    h1.big-4::after {
+        width: 20px !important; /* Shorten the lines */
+        flex-grow: 0 !important; /* Stop them from stretching */
+    }
+
+    /* B. Fix Contact Vaults on Mobile */
+    .contact-section .box {
+        height: 220px !important; /* Shorter boxes for mobile */
+        margin-bottom: 20px !important;
+    }
+    
+    /* Make the email text smaller so it fits on phone screens */
+    .contact-section .box a[href^="mailto"] {
+        font-size: 10px !important;
+    }
+    
+    /* C. Fix the "Project Cards" */
+    .project-card {
+        margin-bottom: 30px; /* Add space between stacked projects */
+    }
+    
+    /* D. Adjust Padding for Sections */
+    .ftco-section {
+        padding: 40px 0 !important;
+    }
+    
+    /* E. Fix the "Hologram Stats" */
+    .block-18 {
+        margin-bottom: 30px;
+    }
+}
+ 
 
 
 </style>
 
 
   </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
+  <body 
+          data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+	        <div id="global-bg-system">
+          <div class="bg-layer-image"></div>
+          <div class="bg-layer-grid"></div>
+          <div class="bg-layer-scan"></div>
+          </div>
 	  
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Ashutosh Singh</a>
+	      <a class="navbar-brand searchlight-logo" href="index.html" data-text="ASHUTOSH SINGH">ASHUTOSH SINGH</a>
 	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -148,7 +1245,7 @@
 		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading"><h6>Hey There!</h6></span>
-			            <h1 class="mb-4 mt-3">I'm <span>Ashutosh Singh</span></h1>
+			            <h1 class="mb-4 mt-3">I'm <span class="creative-name">Ashutosh Singh</span></h1>
 
 						<!-- Element to contain animated typing -->
 						<span id="typing-animation"></span>
@@ -270,16 +1367,27 @@
 						<div class="row justify-content-start pb-3">
 							<div class="col-md-12 heading-section ftco-animate">
 								
-								<h1 class="big">About</h1>
-								<h2 class="mb-4">About Me</h2>
-								
-								
-							     <h5><p>Hi, I'm Ashutosh, a Data Analytics enthusiast passionate about helping businesses make data-driven decisions.
-									 After graduating with a B.Sc. in 2024, my experiences preparing for the UPSC CSE strengthened my analytical mindset. 
-									 In 2025, I pivoted to my true curiosity in Data Analytics and am now actively working with Excel, SQL, Power BI, Python, and Tableau.
-									  I am currently focused on applying these skills to analyze data, create impactful visualizations, 
-									&amp; solve real-world business challenges. 
-									</p></h5>
+						
+								<div class="d-flex align-items-center mb-4">
+                    <h2 class="mb-0" style="color: #fff; text-shadow: 0 0 5px #ffc34a, 0 0 10px #ffc34a; margin-right: 20px;">About Me</h2>
+        
+                     <button id="audio-btn" class="tech-audio-btn" onclick="toggleSpeech()">
+                     <span id="audio-icon" class="icon-volume-up"></span> 
+                     <span id="audio-text">READ BIO</span>
+                     <div class="audio-waves">
+                     <span></span><span></span><span></span><span></span>
+                     </div>
+                     </button>
+                </div>
+
+                  <h5 id="bio-text">
+                  <p>Hi, I'm Ashutosh, a Data Analytics enthusiast passionate about helping businesses make data-driven decisions.
+                   After graduating with a B.Sc. in 2024, my experiences preparing for the UPSC CSE strengthened my analytical mindset. 
+                   In 2025, I pivoted to my true curiosity in Data Analytics and am now actively working with Excel, SQL, Power BI, Python, and Tableau.
+                   I am currently focused on applying these skills to analyze data, create impactful visualizations, 
+                    & solve real-world business challenges. 
+                   </p>
+                  </h5>
 								<ul class="about-info mt-4 px-md-0 px-2">
 									<li class="d-flex"><span>Profile:</span> <span>Data Analytics &amp; Science</span></li>
 									<li class="d-flex"><span>Domain:</span> <span>Retail, Ecommerce, Finance &amp; Digital Marketing</span></li>
@@ -316,8 +1424,7 @@
     	<div class="container">
     		<div class="row justify-content-center pb-5">
           <div class="col-md-10 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
+            <h2 class="mb-4" style="color: #fff; text-shadow: 0 0 5px #ffc34a, 0 0 10px #ffc34a, 0 0 20px #ffc34a, 0 0 40px #ffc34a;">Resume</h2>
             <p>A Data Analytics enthusiast passionate about helping businesses make data-driven decisions.I am fresher and open to data analyst roles.</p>
           </div>
         </div>
@@ -372,11 +1479,15 @@
 		
 			<div class="row">
     			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2021-2024</span>
-    					<h2>Bachelor of Science</h2>
-    					<span class="position">Indira Gandhi National Open University</span>
-    					<p class="mt-4">Grade  70%</p>
+    				<div class="resume-wrap ftco-animate text-border">
+                         <span class="border-text top"></span>
+                         <span class="border-text right"></span>
+                         <span class="border-text bottom"></span>
+                         <span class="border-text left"></span>
+    					 <span class="date">2021-2024</span>
+    					 <h2>Bachelor of Science</h2>
+    					 <span class="position">Indira Gandhi National Open University</span>
+    					 <p class="mt-4">Grade  70%</p>
     				</div>
     			</div>
 
@@ -404,8 +1515,8 @@
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">Projects</h2>
+            
+            <h2 class="mb-4" style="color: #fff; text-shadow: 0 0 5px #ffc34a, 0 0 10px #ffc34a, 0 0 20px #ffc34a, 0 0 40px #ffc34a;">Projects</h2>
             <p>Soon you will find Data Analytics projects on SQL, Python, Power BI below.</p>
           </div>
         </div>
@@ -532,8 +1643,8 @@
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
+            
+            <h2 class="mb-4" style="color: #fff; text-shadow: 0 0 5px #ffc34a, 0 0 10px #ffc34a, 0 0 20px #ffc34a, 0 0 40px #ffc34a;">Contact Me</h2>
             <p>Below are the details to reach out to me!</p>
           </div>
         </div>
@@ -604,13 +1715,15 @@
 		  <div class="row">
 			<div class="col-md-12 text-center">
   
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="Thehilariousone.github.io" target="_blank">Ashutosh</a>
-	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
+			  <div class="copyright-terminal">
+    <p>
+        <span class="sys-prefix">Thankyou, Visit Again</span> 
+        COPYRIGHT &copy; <script>document.write(new Date().getFullYear());</script> 
+        <span class="divider">|</span> 
+        DESIGNED_BY: <a href="https://github.com/Thehilariousone" target="_blank" class="author-link">ASHUTOSH</a>
+        <span class="blinking-cursor">_</span>
+    </p>
+</div>
 
 
   <!-- loader -->
@@ -626,11 +1739,103 @@
   <script src="js/jquery.stellar.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/aos.js"></script> <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
+  <script>
+    // --- SOFT MALE VOICE ENGINE (Fixed Stutter) ---
+    
+    const synth = window.speechSynthesis;
+    let speechObj = null; // Must be global to prevent "breaking" bug
+    let isSpeaking = false;
+    let availableVoices = [];
+
+    // 1. Load voices reliably
+    function loadVoices() {
+        availableVoices = synth.getVoices();
+    }
+    
+    // Ensure voices are loaded immediately and when changed
+    loadVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    function toggleSpeech() {
+        const btn = document.getElementById("audio-btn");
+        const icon = document.getElementById("audio-icon");
+        const label = document.getElementById("audio-text");
+        
+        // Clean text: Replace newlines with periods for natural pauses
+        const textToRead = document.getElementById("bio-text").innerText
+            .replace(/[\r\n]+/g, '. ')
+            .trim();
+
+        // STOP LOGIC
+        if (isSpeaking) {
+            synth.cancel();
+            isSpeaking = false;
+            resetButton(btn, icon, label);
+            return;
+        }
+
+        // START LOGIC
+        if (textToRead !== "") {
+            // Cancel any previous audio first to clear buffer
+            synth.cancel();
+
+            speechObj = new SpeechSynthesisUtterance(textToRead);
+            
+            // --- THE MALE VOICE SELECTION ---
+            // We look for "Google UK Male" first (The best soft male voice)
+            const maleVoice = availableVoices.find(v => v.name.includes("Google UK English Male")) 
+                           || availableVoices.find(v => v.name.includes("Microsoft Ryan")) // Windows Soft Male
+                           || availableVoices.find(v => v.name.includes("Daniel")) // Mac Soft Male
+                           || availableVoices.find(v => v.name.includes("Male") && v.lang.includes("en")) // Generic Male
+                           || availableVoices.find(v => v.lang === "en-GB"); // British usually sounds softer
+
+            if (maleVoice) {
+                speechObj.voice = maleVoice;
+            }
+
+            // --- PHYSICS TUNING FOR "SOFT MALE" ---
+            speechObj.rate = 0.9;   // 90% speed (Deliberate & Calm)
+            speechObj.pitch = 0.8;  // Lower pitch = Deeper, softer male tone
+            speechObj.volume = 1;
+
+            // Visual Updates
+            isSpeaking = true;
+            btn.classList.add("speaking");
+            icon.className = "icon-stop"; 
+            label.innerText = "STOP AUDIO";
+
+            // Event: When finished
+            speechObj.onend = function(event) {
+                isSpeaking = false;
+                resetButton(btn, icon, label);
+            };
+
+            // --- THE "BREAKING" FIX ---
+            // We add a tiny 10ms delay. This prevents the audio from cutting off
+            // at the start by giving the browser time to clear the previous stream.
+            setTimeout(() => {
+                synth.speak(speechObj);
+            }, 10);
+        }
+    }
+
+    function resetButton(btn, icon, label) {
+        btn.classList.remove("speaking");
+        icon.className = "icon-volume-up";
+        label.innerText = "READ BIO";
+    }
+    
+    // Safety stop
+    window.onbeforeunload = function() {
+        synth.cancel();
+    };
+</script>
     
   </body>
 </html>
