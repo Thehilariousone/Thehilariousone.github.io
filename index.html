@@ -1200,7 +1200,72 @@ html, body {
         margin-bottom: 30px;
     }
 }
- 
+ /* ==============================================
+   MOBILE OPTIMIZATION: ABOUT ME SECTION
+   ============================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Adjust the Main Tech Card Container */
+    .ftco-about .row {
+        padding: 20px 15px !important; /* Reduce padding significantly */
+        margin-top: 10px !important;
+        text-align: center !important; /* Force text centering */
+    }
+
+    /* 2. Fix the Profile Image */
+    .about-img {
+        margin: 0 auto 30px auto !important; /* Center horizontally */
+        width: 70% !important; /* Make it smaller and cleaner */
+        display: block;
+    }
+    
+    .about-img img {
+        margin-left: 0 !important; /* Remove the desktop offset */
+        width: 100% !important;
+    }
+
+    /* 3. Center the Text Details (Name, Role, etc.) */
+    .about-info {
+        text-align: center !important;
+        margin-bottom: 30px;
+    }
+    
+    /* Center the list items (Profile, Domain, etc.) */
+    .about-info li {
+        justify-content: center !important;
+        flex-wrap: wrap; /* Allow long text to wrap */
+    }
+    
+    .about-info li span:first-child {
+        font-weight: bold;
+        color: #ffbd39;
+        margin-right: 5px; /* Add space after label */
+    }
+
+    /* 4. Fix Skill Bars Layout */
+    .skill-mf {
+        margin-top: 20px;
+        text-align: left !important; /* Keep progress bars aligned naturally */
+    }
+    
+    .skill-mf h5 {
+        font-size: 14px; /* Smaller font for skills */
+        margin-bottom: 5px;
+    }
+
+    /* 5. Fix the "Project Counter" at the bottom */
+    .counter-wrap {
+        justify-content: center !important;
+        margin-top: 30px !important;
+    }
+    
+    /* 6. Adjust the Decorative Corners (Optional cleanup) */
+    .ftco-about .row::before, 
+    .ftco-about .row::after {
+        transform: scale(0.8); /* Shrink decorative corners slightly */
+    }
+}
 
 
 </style>
