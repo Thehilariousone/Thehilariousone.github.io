@@ -2099,6 +2099,98 @@ html, body {
         body { cursor: auto !important; }
     }
 </style>
+    <script>
+    // --- SOFT MALE VOICE ENGINE (Fixed Stutter) ---
     
+    const synth = window.speechSynthesis;
+    let speechObj = null; // Must be global to prevent "breaking" bug
+    let isSpeaking = false;
+    let availableVoices = [];
+
+    // 1. Load voices reliably
+    function loadVoices() {
+        availableVoices = synth.getVoices();
+    }
+    
+    // Ensure voices are loaded immediately and when changed
+    loadVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    function toggleSpeech() {
+        const btn = document.getElementById("audio-btn");
+        const icon = document.getElementById("audio-icon");
+        const label = document.getElementById("audio-text");
+        
+        // Clean text: Replace newlines with periods for natural pauses
+        const textToRead = document.getElementById("bio-text").innerText
+            .replace(/[\r\n]+/g, '. ')
+            .trim();
+
+        // STOP LOGIC
+        if (isSpeaking) {
+            synth.cancel();
+            isSpeaking = false;
+            resetButton(btn, icon, label);
+            return;
+        }
+
+        // START LOGIC
+        if (textToRead !== "") {
+            // Cancel any previous audio first to clear buffer
+            synth.cancel();
+
+            speechObj = new SpeechSynthesisUtterance(textToRead);
+            
+            // --- THE MALE VOICE SELECTION ---
+            // We look for "Google UK Male" first (The best soft male voice)
+            const maleVoice = availableVoices.find(v => v.name.includes("Google UK English Male")) 
+                           || availableVoices.find(v => v.name.includes("Microsoft Ryan")) // Windows Soft Male
+                           || availableVoices.find(v => v.name.includes("Daniel")) // Mac Soft Male
+                           || availableVoices.find(v => v.name.includes("Male") && v.lang.includes("en")) // Generic Male
+                           || availableVoices.find(v => v.lang === "en-GB"); // British usually sounds softer
+
+            if (maleVoice) {
+                speechObj.voice = maleVoice;
+            }
+
+            // --- PHYSICS TUNING FOR "SOFT MALE" ---
+            speechObj.rate = 0.9;   // 90% speed (Deliberate & Calm)
+            speechObj.pitch = 0.8;  // Lower pitch = Deeper, softer male tone
+            speechObj.volume = 1;
+
+            // Visual Updates
+            isSpeaking = true;
+            btn.classList.add("speaking");
+            icon.className = "icon-stop"; 
+            label.innerText = "STOP AUDIO";
+
+            // Event: When finished
+            speechObj.onend = function(event) {
+                isSpeaking = false;
+                resetButton(btn, icon, label);
+            };
+
+            // --- THE "BREAKING" FIX ---
+            // We add a tiny 10ms delay. This prevents the audio from cutting off
+            // at the start by giving the browser time to clear the previous stream.
+            setTimeout(() => {
+                synth.speak(speechObj);
+            }, 10);
+        }
+    }
+
+    function resetButton(btn, icon, label) {
+        btn.classList.remove("speaking");
+        icon.className = "icon-volume-up";
+        label.innerText = "READ BIO";
+    }
+    
+    // Safety stop
+    window.onbeforeunload = function() {
+        synth.cancel();
+    };
+</script>
   </body>
 </html>
