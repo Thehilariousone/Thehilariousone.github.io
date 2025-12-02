@@ -1547,6 +1547,11 @@ html, body {
         transition: none !important; /* Remove hover transitions on touch screens */
     }
 }
+	/* Stabilize Initial Content Area */
+.site-navbar-target + section {
+    /* Ensures the hero section doesn't start too small */
+    min-height: 80vh; 
+}
 </style>
 
 
@@ -1675,7 +1680,14 @@ html, body {
 								<div class="row">
 									<div class="col-sm-6 col-md-5">
 									  <div class="about-img">
-										<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
+										<img 
+                                            src="images/about-me.png" 
+                                            width="200" 
+                                            height="200" 
+                                            decoding="async" 
+                                            loading="lazy" 
+                                            class="img-fluid rounded b-shadow-a" 
+                                            alt="Profile Picture">
 									  </div>
 									</div>
 									<!-- Details next to profile image -->
