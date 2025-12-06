@@ -29,38 +29,30 @@
 
 
 <style>
-   /* --- FIX: ELIMINATE EMPTY BLACK SPACE (HEADER GAP) --- */
+  /* --- ULTIMATE FIX: TARGETING THE GAP BELOW THE NAVBAR --- */
 
-/* 1. Force the main hero section to full viewport height and remove all default vertical space */
+/* 1. Reset the Navigation Bar's vertical space */
+/* This ensures the navbar itself is not causing a huge margin below it. */
+.ftco_navbar {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    height: 80px !important; /* Force a reasonable height */
+}
+
+/* 2. Target the main Home Content wrapper and pull it up under the navigation bar. */
+/* We are using a large negative margin to eliminate the empty space. */
+/* This is usually the most effective fix for this specific template gap. */
 #home-section {
-    height: 100vh !important;
-    min-height: 100vh !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-}
-
-/* 2. Ensure all internal container wrappers also span the full height */
-#home-section .home-slider,
-#home-section .slider-item,
-#home-section .container,
-#home-section .row {
-    height: 100% !important;
-    min-height: 100vh !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* 3. Target the text block (the one containing 'Hey There! I'm Ashutosh...') and center it vertically within the 100vh area, removing any pushing margin. */
-#home-section .slider-text {
-    /* Remove any top margin that is pushing the content down */
-    margin-top: 0 !important; 
+    margin-top: -80px !important; 
+    padding-top: 80px !important; /* Counteract the negative margin with equal padding so content doesn't disappear behind the fixed navbar */
     
-    /* Center the content vertically within the column */
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important; 
-    height: 100% !important;
+    /* The goal is: negative margin moves section up, padding pushes content down *within* the section. */
+}
+
+/* 3. Ensure the main text container inside the Home section is not pushing content down */
+#home-section .d-flex.align-items-center {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
     /* ==============================================
    PROGRAMMED NEON GLOW MAP
