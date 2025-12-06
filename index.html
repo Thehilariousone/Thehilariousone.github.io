@@ -29,27 +29,38 @@
 
 
 <style>
-/* FIX: Reduce the massive gap inside the Home section (the black space below the navbar) */
+   /* --- FIX: ELIMINATE EMPTY BLACK SPACE (HEADER GAP) --- */
 
-/* 1. Target the Home Section itself */
+/* 1. Force the main hero section to full viewport height and remove all default vertical space */
 #home-section {
-    /* Set padding to 0, or a very small amount, if the template is adding vertical space */
+    height: 100vh !important;
+    min-height: 100vh !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* 2. Ensure all internal container wrappers also span the full height */
+#home-section .home-slider,
+#home-section .slider-item,
+#home-section .container,
+#home-section .row {
+    height: 100% !important;
+    min-height: 100vh !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
 
-/* 2. Target the main content row inside the slider */
+/* 3. Target the text block (the one containing 'Hey There! I'm Ashutosh...') and center it vertically within the 100vh area, removing any pushing margin. */
 #home-section .slider-text {
-    /* Use a negative margin to pull the content up and reduce the gap */
-    margin-top: -150px !important; 
+    /* Remove any top margin that is pushing the content down */
+    margin-top: 0 !important; 
     
-    /* You can adjust the -150px value until the "Hey There!" text is exactly where you want it. */
-    /* Start with -100px and increase the negative value until it looks right. */
-}
-
-/* 3. Ensure the main content column is not adding extra space */
-#home-section .one-forth {
-    padding-top: 0 !important;
+    /* Center the content vertically within the column */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; 
+    height: 100% !important;
 }
     /* ==============================================
    PROGRAMMED NEON GLOW MAP
