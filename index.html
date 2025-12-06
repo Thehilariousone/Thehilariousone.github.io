@@ -29,26 +29,32 @@
 
 
 <style>
+/* FIX: Reduce the massive gap inside the Home section (the black space below the navbar) */
 
+/* 1. Target the Home Section itself */
+#home-section {
+    /* Set padding to 0, or a very small amount, if the template is adding vertical space */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* 2. Target the main content row inside the slider */
+#home-section .slider-text {
+    /* Use a negative margin to pull the content up and reduce the gap */
+    margin-top: -150px !important; 
+    
+    /* You can adjust the -150px value until the "Hey There!" text is exactly where you want it. */
+    /* Start with -100px and increase the negative value until it looks right. */
+}
+
+/* 3. Ensure the main content column is not adding extra space */
+#home-section .one-forth {
+    padding-top: 0 !important;
+}
     /* ==============================================
    PROGRAMMED NEON GLOW MAP
    ============================================== */
 
-
-    /* ... all your other styles are here ... */
-
-    /* FIX: Ensure the Home section takes up the entire screen height */
-    #home-section {
-        min-height: 100vh;
-        display: flex; /* Helps vertically align content */
-        align-items: center; /* Centers the content vertically */
-    }
-
-    /* ==============================================
-    PROGRAMMED NEON GLOW MAP
-    ============================================== */
-
-    /* ... rest of your existing custom CSS ... */
 
 /* 1. Base Background Image */
 #base-background {
