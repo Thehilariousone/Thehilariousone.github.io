@@ -1575,7 +1575,19 @@ html, body {
           <div class="bg-layer-grid"></div>
           <div class="bg-layer-scan"></div>
           </div>
-	    
+	      <div id="page-content-wrapper" class="js-page-load-hidden"> 
+    
+          <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+          <div class="container">
+            </div>
+          </nav>
+          <footer class="ftco-footer ftco-section">
+          <div class="container">
+            </div>
+           </footer>
+
+          </div> <div id="ftco-loader" class="show fullscreen">
+          </div>
     
     
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
@@ -2317,5 +2329,46 @@ html, body {
     // Start the engine
     triggerGlitch();
 </script>
+				<script>
+    // ... all your existing scripts (lenis, tilt, cursor, etc.) ...
+
+    // --- NEW SCRIPT: FIXING THE BACKGROUND LOAD JERK ---
+
+    // Function to handle the smooth reveal
+    function revealContentSmoothly() {
+        const loader = document.getElementById('ftco-loader');
+        const content = document.getElementById('page-content-wrapper');
+
+        // 1. Hide the pre-loader (If it is still visible)
+        if (loader && loader.style.display !== 'none') {
+            loader.style.display = 'none';
+        }
+
+        // 2. Remove the hidden class to trigger the smooth opacity transition
+        if (content) {
+            content.classList.remove('js-page-load-hidden');
+        }
+    }
+
+    // A. Wait for the background image to load:
+    const bkImage = new Image();
+    bkImage.onload = function() {
+        // Once the background image is loaded, reveal the page content.
+        revealContentSmoothly();
+    };
+    // Set the source to trigger the load.
+    bkImage.src = 'images/Background_img.png'; 
+
+    // B. Fallback Safety: Show content after 5 seconds, even if the image fails.
+    setTimeout(revealContentSmoothly, 5000);
+
+    // C. Check if the image is already cached (for instant loads)
+    if (bkImage.complete) {
+        revealContentSmoothly();
+    }
+</script>
+
+  </body>
+</html>
   </body>
 </html>
