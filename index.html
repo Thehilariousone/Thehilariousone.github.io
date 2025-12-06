@@ -29,31 +29,7 @@
 
 
 <style>
-  /* --- ULTIMATE FIX: TARGETING THE GAP BELOW THE NAVBAR --- */
-
-/* 1. Reset the Navigation Bar's vertical space */
-/* This ensures the navbar itself is not causing a huge margin below it. */
-.ftco_navbar {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    height: 80px !important; /* Force a reasonable height */
-}
-
-/* 2. Target the main Home Content wrapper and pull it up under the navigation bar. */
-/* We are using a large negative margin to eliminate the empty space. */
-/* This is usually the most effective fix for this specific template gap. */
-#home-section {
-    margin-top: -80px !important; 
-    padding-top: 80px !important; /* Counteract the negative margin with equal padding so content doesn't disappear behind the fixed navbar */
-    
-    /* The goal is: negative margin moves section up, padding pushes content down *within* the section. */
-}
-
-/* 3. Ensure the main text container inside the Home section is not pushing content down */
-#home-section .d-flex.align-items-center {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
+ 
     /* ==============================================
    PROGRAMMED NEON GLOW MAP
    ============================================== */
@@ -1572,6 +1548,31 @@ html, body {
         box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;
         transition: none !important; /* Remove hover transitions on touch screens */
     }
+}
+	 /* --- ULTIMATE FIX: TARGETING THE GAP BELOW THE NAVBAR --- */
+
+/* 1. Reset the Navigation Bar's vertical space */
+/* This ensures the navbar itself is not causing a huge margin below it. */
+.ftco_navbar {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    height: 80px !important; /* Force a reasonable height */
+}
+
+/* 2. Target the main Home Content wrapper and pull it up under the navigation bar. */
+/* We are using a large negative margin to eliminate the empty space. */
+/* This is usually the most effective fix for this specific template gap. */
+#home-section {
+    margin-top: -80px !important; 
+    padding-top: 80px !important; /* Counteract the negative margin with equal padding so content doesn't disappear behind the fixed navbar */
+    
+    /* The goal is: negative margin moves section up, padding pushes content down *within* the section. */
+}
+
+/* 3. Ensure the main text container inside the Home section is not pushing content down */
+#home-section .d-flex.align-items-center {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 </style>
 
